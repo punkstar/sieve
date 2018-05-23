@@ -29,6 +29,8 @@ if anyof(
     # Hubspot
     header :contains "X-HubSpot-Message-Id" "",
 
+    # Meetup
+    header :contains "X-MEETUP-MESG-ID" ""
 ) {
     fileinto "${newsletterFolder}";
     stop;
