@@ -26,6 +26,10 @@ if anyof(
     # it as a newsletter.
     header :contains "List-Id" "",
 
+    # Not a common one, but recommended by Google for bulk mail:
+    # https://support.google.com/mail/answer/81126?hl=en
+    header :contains "Precedence" "bulk",
+
     # Hubspot
     header :contains "X-HubSpot-Message-Id" "",
 
