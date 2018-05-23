@@ -19,3 +19,13 @@ if header :contains "X-GitHub-Recipient" "" {
     fileinto "${notificationsFolder}";
     stop;
 }
+
+# If the List-ID header is present, and we haven't categorised it anywhere
+# else yet, then this email was probably sent from a mailing list, so mark
+# it as a newsletter.
+if anyof(
+    header :contains "List-Id" ""
+) {
+    fileinto "${newsletterFolder}";
+    stop;
+}
