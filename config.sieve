@@ -14,4 +14,8 @@ set "notificationsFolder" "INBOX.INBOX.Notifications";
 # Categorisation Rules
 ############################################################################
 
-# Add rules here.
+# Github: Catch any notifications.
+if header :contains "X-GitHub-Recipient" "" {
+    fileinto "${notificationsFolder}";
+    stop;
+}
