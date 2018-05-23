@@ -20,12 +20,15 @@ if header :contains "X-GitHub-Recipient" "" {
     stop;
 }
 
-# If the List-ID header is present, and we haven't categorised it anywhere
-# else yet, then this email was probably sent from a mailing list, so mark
-# it as a newsletter.
 if anyof(
+    # If the List-ID header is present, and we haven't categorised it anywhere
+    # else yet, then this email was probably sent from a mailing list, so mark
+    # it as a newsletter.
     header :contains "List-Id" "",
-    header :contains "X-HubSpot-Message-Id" ""
+
+    # Hubspot
+    header :contains "X-HubSpot-Message-Id" "",
+
 ) {
     fileinto "${newsletterFolder}";
     stop;
