@@ -26,6 +26,10 @@ if anyof(
     # it as a newsletter.
     header :contains "List-Id" "",
 
+    # If the List-Unsubscribe is present then that implies you subscribed to
+    # something in the first place, so class it as a newsletter.
+    header :contains "List-Unsubscribe" "",
+
     # Not a common one, but recommended by Google for bulk mail:
     # https://support.google.com/mail/answer/81126?hl=en
     header :contains "Precedence" "bulk",
