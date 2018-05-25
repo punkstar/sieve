@@ -1,0 +1,10 @@
+language: python
+
+python:
+  - 3.6
+
+install:
+  - pip install -r test/requirements.txt
+
+script:
+  - python test/sieve-lint.py < config.sieve
