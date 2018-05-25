@@ -47,9 +47,8 @@ if anyof(
 # GDPR: Mark any GDPR message as read and move to archive
 if 
   anyof(
-  true,
-  header :regex "Subject" "/GDPR/i",
-  body :text :regex "/GDPR/i"
+  header :contains "Subject" "gdpr",
+  body :text :contains "gdpr"
   )
 {
   addflag "\\Seen";
