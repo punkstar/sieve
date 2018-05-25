@@ -43,3 +43,15 @@ if anyof(
     fileinto "${newsletterFolder}";
     stop;
 }
+
+# GDPR: Mark any GDPR message as read and move to archive
+if 
+  anyof(
+  header :contains "Subject" "gdpr",
+  body :text :contains "gdpr"
+  )
+{
+  addflag "\\Seen";
+  fileinto "\\Archive";
+  removeflag "\\Seen";
+}
